@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>HRSFlow</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            position: relative;
+            text-align: center;
+        }
+
+        .page {
+            position: relative;
+            width: 100%;
+            max-width: 1920px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        video {
+            display: block;
+            position: absolute;
+            width: 103%;
+            top: 0;
+            left: -1.5%;
+        }
+
+        .layout {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .layout img {
+            width: 100%;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            max-width: 1920px;
+            width: 100%;
+            transform: translateX(-50%) translateY(-100%);
+            transition: ease-in-out all 350ms;
+        }
+
+        .fixed .header {
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+    <script>
+        window.addEventListener('scroll', function () {
+            var body = document.getElementsByTagName('body')[0];
+            if (window.scrollY > 0) {
+                body.setAttribute('class', 'fixed');
+            } else {
+                body.setAttribute('class', null);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="video">
+            <video autoplay loop muted playsinline>
+                <source src="video/video.mp4" />
+            </video>
+        </div>
+        <div class="layout">
+            <img src="img/index.png">
+            <img class="header" src="img/header.jpg">
+        </div>
+    </div>
+</body>
+
+</html>
