@@ -15,27 +15,65 @@
             width: 100%;
             max-width: 1920px;
             margin: 0 auto;
-            overflow-x: hidden;
+        }
+
+        .page:before,
+        .page:after {
+            content: '';
+            display: block;
+            position: absolute;
+            background: white;
+            height: 100vh;
+            width: 50vw;
+            top: 0;
+        }
+
+        .page:before {
+            left: -50vw;
+        }
+
+        .page:after {
+            left: 100%;
         }
 
         video {
             display: block;
             position: fixed;
-            width: 100%;
-            max-width: 1920px;
+            min-height: 100vh;
             left: 50%;
-            top: 0.2%;
+            top: 0;
             transform: translateX(-50%) scaleY(1.02);
+        }
+
+        @media screen and (min-width: 1920px) {
+            video {
+                min-width: 1920px;
+            }
         }
 
         .layout {
             position: relative;
             z-index: 1;
             width: 100%;
+            box-shadow: 0 0 0 50vw white;
+            overflow-x: hidden;
         }
 
         .layout img {
             width: 100%;
+        }
+
+        .bullets {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            opacity: 0;
+            transition: opacity ease-in-out 250ms;
+        }
+
+        .show .bullets {
+            opacity: 1;
         }
 
         .header {
@@ -66,7 +104,22 @@
             if (window.scrollY > 0) {
                 body.setAttribute('class', 'fixed');
             } else {
-                body.setAttribute('class', null);
+                body.setAttribute('class', '');
+            }
+        });
+        var to;
+        window.addEventListener('mousemove', function () {
+            var page = document.querySelector('.page');
+            if (page) {
+                if (to) {
+                    clearTimeout(to);
+                } else {
+                    page.setAttribute('class', 'page show');
+                }
+                to = setTimeout(function () {
+                    page.setAttribute('class', 'page');
+                    to = null;
+                }, 1500);
             }
         });
     </script>
@@ -80,7 +133,8 @@
             </video>
         </div>
         <div class="layout">
-            <img class="index" src="img/index.png">
+            <img class="index" src="img/index.v2.png">
+            <img class="bullets" src="img/bullets.v2.png">
             <img class="header" src="img/header-white.jpg">
             <img class="service" src="img/service-menu.png">
         </div>
