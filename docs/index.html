@@ -65,6 +65,19 @@
             width: 100%;
         }
 
+        .corners {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            opacity: 0;
+            transition: opacity ease-in-out 250ms;
+        }
+
+        .corners.visible {
+            opacity: 1;
+        }
+
         .bullets {
             position: absolute;
             top: 0;
@@ -103,10 +116,13 @@
     <script>
         window.addEventListener('scroll', function () {
             var body = document.getElementsByTagName('body')[0];
+            var corners = document.querySelector('.corners');
             if (window.scrollY > 0) {
                 body.setAttribute('class', 'fixed');
+                corners.setAttribute('class', 'corners visible');
             } else {
                 body.setAttribute('class', '');
+                corners.setAttribute('class', 'corners');
             }
         });
         var to;
@@ -135,10 +151,11 @@
             </video>
         </div>
         <div class="layout">
-            <img class="index" src="img/index.v2.png">
-            <img class="bullets" src="img/bullets.v2.png">
+            <img class="index" src="img/homepage.v3.png">
+            <img class="corners" src="img/corners.png">
+            <img class="bullets" src="img/bullets.v3.png">
             <img class="header" src="img/header-white.jpg">
-            <img class="service" src="img/service-menu.png">
+            <img class="service" src="img/service-menu-closed.png">
         </div>
     </div>
 </body>

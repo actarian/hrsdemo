@@ -4,7 +4,7 @@
     "author": "Luca Zampetti <lzampetti@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "start": "http-server \"./\" -o",
+        "start": "http-server \"./docs\" -o",
         "postinstall": "npm run start"
     },
     "devDependencies": {
